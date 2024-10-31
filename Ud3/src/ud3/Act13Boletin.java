@@ -7,48 +7,65 @@ public class Act13Boletin {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Scanner sc = new Scanner(System.in);
-				
-		String password;
+		Scanner sca = new Scanner(System.in);
+
+		String contra;
+
+		int mayusculas = 0;
+
+		int minusculas = 0;
+
+		int numeros = 0;
+
+		int especiales = 0;
+
+
 
 		do {
-			System.out.println("Escribe una contraseña de 10 o más caracteres: ");
-			password = sc.next();
-		}
-		while(password.length() < 10);
-		
-		
-		
-		int contadorLetrasMayusculas = 0;
-		int contadorLetrasMinusculas = 0;
-		int contadorNum = 0;
-		int contadorCaracteres = 0;
-		
-		for(int i = 0; i < password.length() ; i++) {
-			
-			String caracter = password.substring(i , i+1);
-			
-			if(caracter.matches("[a-z]" )) {
-				contadorLetrasMinusculas++;
+
+			System.out.println("Mete una contraseña: ");
+
+			contra = sca.next();
+
+			for (int i = 0; i < contra.length(); i++) {
+
+				String caracater = contra.substring(i, i + 1);
+
+
+
+				if (caracater.matches("[A-Z]")) {
+
+					mayusculas++;
+
+				} else if (caracater.matches("[a-z]")) {
+
+					minusculas++;
+
+				} else if (caracater.matches("[0-9]")) {
+
+					numeros++;
+
+				} else if (caracater.matches("[@#*%&/]")) {
+
+					especiales++;
+
+				}
+
 			}
-			else if(caracter.matches("[A-Z]")) {
-				contadorLetrasMayusculas++;
-			}
-			else if(caracter.matches("[0-9]")) {
-				contadorNum++;
-			}
-			else if(caracter.matches("[@#*%&/]")) {
-				contadorCaracteres++;
-			}
-		}
+
 		
-		if(contadorLetrasMinusculas >= 2 && contadorLetrasMayusculas >= 2 && contadorNum >= 2 && contadorCaracteres >= 2) {
-			
-			System.out.println("La contraseña es valida.");
-		}
-		else {
-			System.out.println("La contraseña no es valida.");
-		}
+
+		} while (contra.length() < 10 || (mayusculas < 2 || minusculas < 2 || numeros < 2 || especiales < 2));
+
+		System.out.println("Contraseña VALIDA");
+
+		
+
+
+
+		
+
+
 
 	}
 
